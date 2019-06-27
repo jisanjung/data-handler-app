@@ -20,6 +20,20 @@
 .display-block {
     display: block;
 }
+.success {
+    background-color: #00e676; 
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.failed {
+    background-color: #ff5252; 
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
 
 /* label focus color */
  .input-field input:focus + label {
