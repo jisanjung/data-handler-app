@@ -24,14 +24,16 @@
                         <input type="email" id="email" placeholder="Email">
                     </div>
                     <div class="col s12">
-                        <button class="btn waves-effect waves-light red darken-2 margin-bottom" type="submit" id="insert-btn">
+                        <button class="btn waves-effect waves-light red darken-2 margin-bottom" type="button" id="insert-btn">
                             Insert
                         </button>
                     </div>
                 </div>
           </form>
           <!--Alert Boxes-->
-          <div class="success display-none" id="insert-success">Insert Successful</div>
+          <div class="success display-none" id="insert-success">Insert Successful</b>
+          Your ID Number is: <div class="id-number"></div>
+          </div>
           <div class="failed display-none" id="already-exists">User Already Exists</div>
           <div class="failed display-none" id="incomplete">Please Fill Out All Input</div>
           <!--Person Lookup-->
@@ -39,8 +41,7 @@
           <form>
             <div class="row">
                 <div class="input-field">
-                    <input type="text" id="lookup-first" class="col s6" placeholder="First Name">
-                    <input type="text" id="lookup-last" class="col s6" placeholder="Last Name">
+                    <input type="number" id="lookup-id" class="col s12" placeholder="ID Number">
                 </div>
                 <div class="col s12">
                         <button class="btn waves-effect waves-light red darken-2 margin-bottom margin-top" type="submit" id="lookup-btn">
