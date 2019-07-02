@@ -20,6 +20,9 @@
 .display-block {
     display: block;
 }
+.display-inline {
+    display: inline;
+}
 .success {
     background-color: #00e676; 
     color: #fff;

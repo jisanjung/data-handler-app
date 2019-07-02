@@ -1,3 +1,4 @@
+var data = [];
 var counter = 0;
 
 var firstName = document.getElementById("first");
@@ -5,6 +6,7 @@ var lastName = document.getElementById("last");
 var age = document.getElementById("age");
 var email = document.getElementById("email");
 var insertButton = document.getElementById("insert-btn");
+var lookupButton = document.getElementById("lookup-btn");
 
 var Person = function(first, last, age, email, id) {
     this.first = first;
@@ -16,10 +18,41 @@ var Person = function(first, last, age, email, id) {
 
 insertButton.addEventListener("click", function() {
     
-    counter++;
+    var id = document.querySelector(".id-number");
+    var success = document.getElementById("insert-success");
+    var incomplete = document.getElementById("incomplete");
     
-    var user = new Person(firstName.value, lastName.value, age.value, email.value, counter);
+    if (firstName.value === "" || lastName.value === "" || age.value === "" || email.value === "") {
+        incomplete.classList.remove("display-none");
+        } else {
+            
+            counter++;
+            
+            var user = new Person(firstName.value, lastName.value, age.value, email.value, counter);
+
+            data.push(user);
+            console.log(data);
+//            var serializedObject = JSON.stringify(user);
+//            localStorage.setItem(firstName.value, serializedObject);
+
+            incomplete.classList.add("display-none");
+            success.classList.remove("display-none");
+            id.textContent = counter;
+        }
+});
+
+lookupButton.addEventListener("click", function() {
     
-    var serializedObject = JSON.stringify(user);
-    localStorage.setItem(firstName.value, serializedObject);
+    var lookupID = document.getElementById("lookup-id");
+    var showID = document.querySelector(".show-id");
+    var lookupResults = document.querySelector(".lookup-results");
+    var collectionItems = document.getElementsByClassName("collection-item");
+    
+    showID.textContent = lookupID.value;
+    lookupResults.classList.remove("display-none");
+    
+    collectionItems[0].textContent = data[lookupID.value - 1].first;
+    collectionItems[1].textContent = data[lookupID.value - 1].last;
+    collectionItems[2].textContent = data[lookupID.value - 1].age;
+    collectionItems[3].textContent = data[lookupID.value - 1].email;
 });

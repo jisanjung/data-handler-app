@@ -12,7 +12,7 @@
     </head>
 
     <body>
-      <div class="container">
+      <div class="container margin-bottom">
             <!--New Credential Input-->
             <h1>Please Provide Credentials</h1>
             <form>
@@ -31,7 +31,7 @@
                 </div>
           </form>
           <!--Alert Boxes-->
-          <div class="success display-none" id="insert-success">Insert Successful</b>
+          <div class="success display-none" id="insert-success">Insert Successful!</b>
           Your ID Number is: <div class="id-number"></div>
           </div>
           <div class="failed display-none" id="already-exists">User Already Exists</div>
@@ -44,7 +44,7 @@
                     <input type="number" id="lookup-id" class="col s12" placeholder="ID Number">
                 </div>
                 <div class="col s12">
-                        <button class="btn waves-effect waves-light red darken-2 margin-bottom margin-top" type="submit" id="lookup-btn">
+                        <button class="btn waves-effect waves-light red darken-2 margin-bottom margin-top" type="button" id="lookup-btn">
                             Lookup
                         </button>
                 </div>
@@ -54,7 +54,7 @@
           <div class="failed display-none" id="no-match">User Does Not Exist Yet</div>
           <!--Results of Successful Lookup-->
           <div class="lookup-results display-none">
-              <h5 class="red-text text-darken-2">You looked up <h5 class="lookup-name red-text text-darken-2"></h5></h5>
+              <h5 class="red-text text-darken-2">You looked up <h5 class="show-id red-text text-darken-2"></h5></h5> 
               <ul class="collection">
                   <li class="collection-item"></li>
                   <li class="collection-item"></li>
