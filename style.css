@@ -37,6 +37,9 @@
     font-weight: bold;
     text-align: center;
 }
+.bold-text {
+    font-weight: bold;
+}
 
 /* label focus color */
  .input-field input:focus + label {

@@ -16,30 +16,31 @@ var Person = function(first, last, age, email, id) {
     this.id = id;
 };
 
-insertButton.addEventListener("click", function() {
-    
+var addToData = function() {
     var id = document.querySelector(".id-number");
     var success = document.getElementById("insert-success");
     var incomplete = document.getElementById("incomplete");
     
-    if (firstName.value === "" || lastName.value === "" || age.value === "" || email.value === "") {
+    if (firstName.value === "" || lastName.value === "" || age.value === ""         || email.value === "") {
         incomplete.classList.remove("display-none");
-        } else {
-            
-            counter++;
-            
-            var user = new Person(firstName.value, lastName.value, age.value, email.value, counter);
+            } else {
 
-            data.push(user);
-            console.log(data);
-//            var serializedObject = JSON.stringify(user);
-//            localStorage.setItem(firstName.value, serializedObject);
+                counter++;
 
-            incomplete.classList.add("display-none");
-            success.classList.remove("display-none");
-            id.textContent = counter;
-        }
-});
+                var user = new Person(firstName.value, lastName.value, age.value, email.value, counter);
+                
+                data.push(user);
+
+                incomplete.classList.add("display-none");
+                success.classList.remove("display-none");
+                id.textContent = counter;
+    }
+    
+    var deserializedObject = JSON.parse(localStorage.getItem(firstName.value));
+    return deserializedObject;
+};
+
+insertButton.addEventListener("click", addToData);
 
 lookupButton.addEventListener("click", function() {
     
@@ -47,12 +48,25 @@ lookupButton.addEventListener("click", function() {
     var showID = document.querySelector(".show-id");
     var lookupResults = document.querySelector(".lookup-results");
     var collectionItems = document.getElementsByClassName("collection-item");
+    var noMatch = document.getElementById("no-match");
     
-    showID.textContent = lookupID.value;
-    lookupResults.classList.remove("display-none");
-    
-    collectionItems[0].textContent = data[lookupID.value - 1].first;
-    collectionItems[1].textContent = data[lookupID.value - 1].last;
-    collectionItems[2].textContent = data[lookupID.value - 1].age;
-    collectionItems[3].textContent = data[lookupID.value - 1].email;
+    for (var i = 0; i < data.length; i++) {
+        if (data[lookupID.value - 1] == data[i]) {
+            showID.textContent = lookupID.value;
+            lookupResults.classList.remove("display-none");
+            
+            noMatch.classList.add("display-none");
+
+            collectionItems[0].textContent = data[lookupID.value - 1].first;
+            collectionItems[1].textContent = data[lookupID.value - 1].last;
+            collectionItems[2].textContent = data[lookupID.value - 1].age;
+            collectionItems[3].textContent = data[lookupID.value - 1].email;
+            
+            } else {
+                var collection = document.querySelector(".collection");
+                
+                collection.classList.add("display-none");
+                noMatch.classList.remove("display-none");
+        }
+    }
 });
